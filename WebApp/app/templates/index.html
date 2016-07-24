@@ -196,7 +196,7 @@
 		        <div class="navbar-header">
 		        	<!-- Mobile Toggle Menu Button -->
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-		         <a class="navbar-brand" href="index.html">Elate</a> 
+		         <a class="navbar-brand" href="http://www.google.com">Elate</a> 
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
@@ -206,7 +206,7 @@
 		            <li><a href="#" data-nav-section="services"><span>Services</span></a></li>
 		            <li><a href="#" data-nav-section="about"><span>About</span></a></li>
 		            <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
-		           	<li><a href="{{url_for('signup')}}" target="_blank"><span>Sign Up</span></a></li>
+		            <li><a href="#" id="signupevent"><span>Sign Up</span></a></li>
 		          </ul>
 		        </div>
 			    </nav>
@@ -673,46 +673,12 @@
 			</div>
 		</div>
 	</footer>
-	
-	<!-- For demo purposes Only ( You may delete this anytime :-) 
-	<div id="colour-variations">
-		<a class="option-toggle"><i class="icon-gear"></i></a>
-		<h3>Preset Colors</h3>
-		<ul>
-			<li>
-				<a href="javascript: void(0);" data-theme="style">
-					<span style="background: #3f95ea;"></span>
-					<span style="background: #52d3aa;"></span>
-					<span style="background: #f2f2f2;"></span>
-				</a>
-			</li>
-			<li>
-				<a href="javascript: void(0);" data-theme="style2">
-					<span style="background: #329998;"></span>
-					<span style="background: #6cc99c;"></span>
-					<span style="background: #f2f2f2;"></span>
-				</a>
-			</li>
-			<li>
-				<a href="javascript: void(0);" data-theme="style3">
-					<span style="background: #9f466e;"></span>
-					<span style="background: #c24d67;"></span>
-					<span style="background: #f2f2f2;"></span>
-				</a>
-			</li>
-			<li>
-				<a href="javascript: void(0);" data-theme="style4">
-					<span style="background: #21825C;"></span>
-					<span style="background: #A4D792;"></span>
-					<span style="background: #f2f2f2;"></span>
-				</a>
-			</li>
-			
-		</ul>
-	</div>-->
-	<!-- End demo purposes only -->
 
-	
+	<script type="text/javascript">
+	    document.getElementById("signupevent").onclick = function () {
+	        location.href = "{{url_for('signup')}}";
+	    };
+	</script>
 	<!-- jQuery -->
 	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
@@ -732,24 +698,6 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="{{ url_for('static', filename='js/google_map.js') }}"></script>
 
-	<!-- For demo purposes only styleswitcher ( You may delete this anytime ) -->
-	<script src="{{ url_for('static', filename='js/jquery.style.switcher.js') }}"></script>
-	<script>
-		$(function(){
-			$('#colour-variations ul').styleSwitcher({
-				defaultThemeId: 'theme-switch',
-				hasPreview: false,
-				cookie: {
-		          	expires: 30,
-		          	isManagingLoad: true
-		      	}
-			});	
-			$('.option-toggle').click(function() {
-				$('#colour-variations').toggleClass('sleep');
-			});
-		});
-	</script>
-	<!-- End demo purposes only -->
 
 	<!-- Main JS (Do not remove) -->
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
