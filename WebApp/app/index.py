@@ -2,7 +2,7 @@ from flask import render_template
 from app import app
 
 @app.route('/')
-@app.route('/login')
+@app.route('/index')
 def index():
     user = { 'nickname': 'Miguel' } # fake user
     posts = [ # fake array of posts
@@ -15,7 +15,4 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template("login.html",
-        title = 'Home',
-        user = user,
-        posts = posts)
+    return render_template("index.html")
