@@ -286,7 +286,11 @@
 
 	<!-- For demo purposes only styleswitcher ( You may delete this anytime ) -->
 	<script src="{{ url_for('static', filename='js/jquery.style.switcher.js') }}"></script>
-	<script>
+	<!-- End demo purposes only -->
+
+	<!-- Main JS (Do not remove) -->
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+		<script>
 		$(function(){
 			$('#colour-variations ul').styleSwitcher({
 				defaultThemeId: 'theme-switch',
@@ -301,10 +305,6 @@
 			});
 		});
 	</script>
-	<!-- End demo purposes only -->
-
-	<!-- Main JS (Do not remove) -->
-	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 	</body>
 </html>
