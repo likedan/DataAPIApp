@@ -220,8 +220,19 @@
 				<div class="text-inner">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<h1 class="to-animate">Do something you love.</h1>
-							<h2 class="to-animate">Another free HTML5 bootstrap template by <a href="http://freehtml5.co/" target="_blank" title="Free HTML5 Bootstrap Templates">FREEHTML5.co</a> released under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Commons 3.0</a></h2>
+						    {% if title %}
+							<h1 class="to-animate">{{ title }}</h1>
+						    {% else %}
+							<h1 class="to-animate">Trading Data</h1>
+						    {% endif %}
+						    {% if subtitles %}
+						        {% for subtitle in subtitles %}
+								<h2 class="to-animate">{{ subtitle }}</h2>
+							    {% endfor %}
+						    {% else %}
+							<h2 class="to-animate">Stocks & Currencys data for developing trading algorithms. </h2>
+							<h2 class="to-animate"> Both historical data and reatime API available for FREE. </h2>
+							{% endif %}					    
 						</div>
 					</div>
 				</div>
@@ -662,8 +673,7 @@
 		</div>
 	</footer>
 	
-	
-	<!-- For demo purposes Only ( You may delete this anytime :-) -->
+	<!-- For demo purposes Only ( You may delete this anytime :-) 
 	<div id="colour-variations">
 		<a class="option-toggle"><i class="icon-gear"></i></a>
 		<h3>Preset Colors</h3>
@@ -698,7 +708,7 @@
 			</li>
 			
 		</ul>
-	</div>
+	</div>-->
 	<!-- End demo purposes only -->
 
 	
