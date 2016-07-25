@@ -215,7 +215,7 @@
 					<h2 class="to-animate">Sign Up</h2>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>Get the data right.</h3>
+							<h3>Welcome to XXX. Let's setup your account.</h3>
 						</div>
 					</div>
 				</div>
@@ -223,22 +223,24 @@
 			<center><div class="row row-bottom-padded-md">
 				<div class="col-md-3 to-animate"></div>
 				<div class="col-md-6 to-animate">
+					<form method="POST" action="/">
 					<div class="form-group ">
 						<label for="name" class="sr-only">Full Name</label>
-						<input id="name" class="form-control" placeholder="Name" type="text">
+						{{ form.full_name(placeholder='Full Name',class_='form-control') }}
 					</div>
 					<div class="form-group ">
 						<label for="email" class="sr-only">Email</label>
-						<input id="email" class="form-control" placeholder="Email" type="email">
+						{{ form.email(placeholder='Email',class_='form-control') }}
 					</div>
 					<div class="form-group ">
 						<label for="phone" class="sr-only">Password</label>
-						<input id="phone" class="form-control" placeholder="Password" type="password">
+						{{ form.password(placeholder='Password',class_='form-control') }}
 					</div>
 
 					<div class="form-group ">
-						<input class="btn btn-primary btn-lg" value="Send Message" type="submit">
+						<input class="btn btn-primary btn-lg" value="Sign Up" type="submit">
 					</div>
+					</form>
 					</div>
 				</div>
 
@@ -290,7 +292,7 @@
 
 	<!-- Main JS (Do not remove) -->
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-		<script>
+	<script>
 		$(function(){
 			$('#colour-variations ul').styleSwitcher({
 				defaultThemeId: 'theme-switch',
