@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect
-from app import app
+from app import app, auth_manager
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
@@ -31,6 +31,7 @@ def signupform():
             user.email = form.email.data
             user.full_name = form.full_name.data
             user.save()
+            self.authenticated_user = user
             return redirect("/index", code=302)
     else:
         for key in form.errors.keys():

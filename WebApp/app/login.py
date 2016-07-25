@@ -13,7 +13,10 @@ class LoginForm(Form):
 
 def login():
     form = LoginForm()
-    return render_template("login.html", form=form)
+    if auth_manager.is_authenticated():
+        return redirect("/index", code=302)
+    else:
+        return render_template("login.html", form=form)
 
 @app.route('/loginform', methods=['POST'])
 
