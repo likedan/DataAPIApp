@@ -1,11 +1,11 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from app import app
 from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
-from flask_pymongo import PyMongo
+from werkzeug.security import generate_password_hash
+from user import User
 
-mongo = PyMongo(app)
 
 class SignUpForm(Form):
     email = StringField('email', validators=[DataRequired(), Email()])
@@ -21,15 +21,17 @@ def signup():
 @app.route('/signupform', methods=['POST'])
 def signupform():
     form = SignUpForm(request.form)
-    print form.validate()
     error_list = []
-    print form.errors
     if form.validate():
-        if mongo.db.users.find_one({'email': form.email.data}):
+        user = User(form.email.data)
+        if user.user_exists():
             error_list.append("This email is associated with another account, please use a different one.")
         else:
-            mongo.db.users.insert({"email": form.email.data, "full_name":form.full_name.data, "password": form.password.data})
-            return render_template("index.html")
+            user.set_password(form.password.data)
+            user.email = form.email.data
+            user.full_name = form.full_name.data
+            user.save()
+            return redirect("/index", code=302)
     else:
         for key in form.errors.keys():
             error_list.append(key+": "+form.errors[key][0])
