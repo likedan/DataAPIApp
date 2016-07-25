@@ -196,7 +196,7 @@
 		        <div class="navbar-header">
 		        	<!-- Mobile Toggle Menu Button -->
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-		         <a class="navbar-brand" href="http://www.google.com">Elate</a> 
+		         <a class="navbar-brand" href="{{url_for('index')}}">Elate</a> 
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
@@ -206,7 +206,7 @@
 		            <li><a href="#" data-nav-section="services"><span>Services</span></a></li>
 		            <li><a href="#" data-nav-section="about"><span>About</span></a></li>
 		            <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
-		            <li><a href="#" id="signupevent"><span>Sign Up</span></a></li>
+		            <li><a href="#" id="loginevent"><span>Login</span></a></li>
 		          </ul>
 		        </div>
 			    </nav>
@@ -675,8 +675,8 @@
 	</footer>
 
 	<script type="text/javascript">
-	    document.getElementById("signupevent").onclick = function () {
-	        location.href = "{{url_for('signup')}}";
+	    document.getElementById("loginevent").onclick = function () {
+	        location.href = "{{url_for('login')}}";
 	    };
 	</script>
 	<!-- jQuery -->
