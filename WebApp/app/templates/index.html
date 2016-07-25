@@ -206,7 +206,11 @@
 		            <li><a href="#" data-nav-section="services"><span>Services</span></a></li>
 		            <li><a href="#" data-nav-section="about"><span>About</span></a></li>
 		            <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
-		            <li><a href="#" id="loginevent"><span>Login</span></a></li>
+		            {% if has_user %}
+		            <li><a href="#" id="loginevent"><span>My Account</span></a></li>
+		            {% else %}
+					<li><a href="#" id="loginevent"><span>Login</span></a></li>
+		            {% endif %}	
 		          </ul>
 		        </div>
 			    </nav>
