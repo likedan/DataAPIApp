@@ -223,7 +223,13 @@
 			<center><div class="row row-bottom-padded-md">
 				<div class="col-md-3 to-animate"></div>
 				<div class="col-md-6 to-animate">
-					<form method="POST" action="{{}}">
+					{% if error %}
+						<center><ul class="fh5co-contact-info">
+						<li>** {{error}} **     </li>
+						</ul></center>
+					{% endif %}
+					<form method="POST" action="{{url_for('signupform')}}">
+					{{ form.hidden_tag() }}
 					<div class="form-group ">
 						<label for="name" class="sr-only">Full Name</label>
 						{{ form.full_name(placeholder='Full Name',class_='form-control') }}
@@ -241,7 +247,6 @@
 						<input class="btn btn-primary btn-lg" value="Sign Up" type="submit">
 					</div>
 					</form>
-					</div>
 				</div>
 
 			</div></center>
