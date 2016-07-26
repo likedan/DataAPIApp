@@ -207,9 +207,9 @@
 		            <li><a href="#" data-nav-section="about"><span>About</span></a></li>
 		            <li><a href="#" data-nav-section="contact"><span>Contact</span></a></li>
 		            {% if has_user %}
-		            <li><a href="#" id="loginevent"><span>My Account</span></a></li>
+		            <li><a href="#" id="myaccountevent"><span>My Account</span></a></li>
 		            {% else %}
-					<li><a href="#" id="myaccountevent"><span>Login</span></a></li>
+					<li><a href="#" id="loginevent"><span>Login</span></a></li>
 		            {% endif %}	
 		          </ul>
 		        </div>
@@ -230,13 +230,13 @@
 						    {% else %}
 							<h1 class="to-animate">Trading Data</h1>
 						    {% endif %}
-						    {% if subtitles %}
-						        {% for subtitle in subtitles %}
-								<h2 class="to-animate">{{ subtitle }}</h2>
-							    {% endfor %}
+						     <br /> 
+							<h2 class="to-animate">Stocks & Currencys data for developing trading algorithms.</h2>
+							<h2 class="to-animate">FREE historical data and reatime API available!</h2>
+						    {% if has_user %}
 						    {% else %}
-							<h2 class="to-animate">Stocks & Currencys data for developing trading algorithms. </h2>
-							<h2 class="to-animate"> Both historical data and reatime API available for FREE. </h2>
+						    <br /> 
+						    <p><a id="signupevent" href="#" class="btn btn-primary to-animate">Sign Up</a></p>
 							{% endif %}					    
 						</div>
 					</div>
@@ -681,6 +681,9 @@
 	<script type="text/javascript">
 	    document.getElementById("loginevent").onclick = function () {
 	        location.href = "{{url_for('login')}}";
+	    };
+	   	document.getElementById("signupevent").onclick = function () {
+	        location.href = "{{url_for('signup')}}";
 	    };
 	</script>
 	<!-- jQuery -->

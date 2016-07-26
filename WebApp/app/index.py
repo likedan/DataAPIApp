@@ -6,9 +6,10 @@ from app import app, auth_manager
 
 def index():
     title = "Trading Data"
-    subtitles = ["Stocks & Currencys data for developing trading algorithms.", "FREE historical data and reatime API available!"]
 
     if auth_manager.is_authenticated():
-        return render_template("index.html", title=title, subtitles=subtitles, has_user = True)
+        subtitles = ["", ""]
+        return render_template("index.html", title=title, has_user = True)
     else:
-        return render_template("index.html", title=title, subtitles=subtitles, has_user = False)
+        subtitles = ["Stocks & Currencys data for developing trading algorithms.", '<a href="'+url_for("signup")+'">Sign Up</a> for FREE historical data and reatime API!']
+        return render_template("index.html", title=title, has_user = False)

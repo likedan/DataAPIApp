@@ -200,7 +200,7 @@
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="/index" data-nav-section="home"><span>Home</span></a></li>
+		            <li class="active"><a href="/index" id="loginevent"><span>Login</span></a></li>
 		          </ul>
 		        </div>
 			    </nav>
@@ -275,6 +275,12 @@
 		</div>
 	</footer>
 	
+	<script type="text/javascript">
+	    document.getElementById("loginevent").onclick = function () {
+	        location.href = "{{url_for('login')}}";
+	    };
+	</script>
+
 	<!-- jQuery -->
 	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
