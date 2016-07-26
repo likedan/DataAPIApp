@@ -16,17 +16,17 @@ class AuthenticationManager:
         else:
             return False
 
-    def generate_confirmation_token(email):
+    def generate_confirmation_token(self, email):
         serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-        return serializer.dumps(email, salt=app.config['SECURITY_PASSWORD_SALT'])
+        return serializer.dumps(email, salt=app.config['SECRET_KEY_EMAIL_AUTHENTICATION'])
 
 
-    def confirm_token(token, expiration=86400):
+    def confirm_token(self, token, expiration=86400):
         serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
         try:
             email = serializer.loads(
                 token,
-                salt=app.config['SECURITY_PASSWORD_SALT'],
+                salt=app.config['SECRET_KEY_EMAIL_AUTHENTICATION'],
                 max_age=expiration
             )
         except:

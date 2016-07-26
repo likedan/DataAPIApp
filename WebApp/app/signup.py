@@ -5,7 +5,7 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
 from werkzeug.security import generate_password_hash
 from user import User
-
+import message
 
 class SignUpForm(Form):
     email = StringField('email', validators=[DataRequired(), Email()])
@@ -30,9 +30,10 @@ def signupform():
             user.set_password(form.password.data)
             user.email = form.email.data
             user.full_name = form.full_name.data
-            self.authenticated_user = user
+            auth_manager.authenticated_user = user
             token = auth_manager.generate_confirmation_token(user.email)
             user.email_confirmation_token = token
+            message.send_confirmation_email_for_user(user)
             user.save()
             return redirect("/index", code=302)
     else:
