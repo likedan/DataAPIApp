@@ -7,9 +7,7 @@ from flask_wtf import Form
 
 def email_confirmation_form():
     print request
-    email = request.args.get('email')
     token = request.args.get('token')    
-    print email
     print token
     error_list = []
 

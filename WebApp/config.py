@@ -1,13 +1,16 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
+# authentication
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 SECRET_KEY_EMAIL_AUTHENTICATION = 'my_precious_two'
 
+# email
+MAIL_SERVER = 'smtp.gmail.com:587'
+MAIL_USERNAME = 'likedan5@gmail.com'
+MAIL_PASSWORD = '15889431247'
 
-MAIL_SERVER = 'smtp.live.com'
-MAIL_PORT = 25
-MAIL_USE_SSL = False
-MAIL_USERNAME = 'likedan5@hotmail.com'
-MAIL_PASSWORD = 'lkdlkd'
+# names
+APP_NAME_CAPITAL = "TraData"
+APP_NAME = "TraData"

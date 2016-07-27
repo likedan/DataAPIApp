@@ -5,6 +5,7 @@ from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
 from werkzeug.security import generate_password_hash
 from user import User
+import config
 import message
 
 class SignUpForm(Form):
@@ -16,7 +17,7 @@ class SignUpForm(Form):
 
 def signup():
     form = SignUpForm()
-    return render_template("signup.html", form=form)
+    return render_template("signup.html", form=form, app_name=config.APP_NAME)
 
 @app.route('/signupform', methods=['POST'])
 def signupform():
@@ -36,11 +37,11 @@ def signupform():
             user.email_confirmation_token = token
             user.is_email_authenticated = False
             message.send_confirmation_email_for_user(user)
-            
+
             user.save()
             return redirect("/index", code=302)
     else:
         for key in form.errors.keys():
             error_list.append(key+": "+form.errors[key][0])
     #only displaying one error for now.                     
-    return render_template("signup.html", form=form, error=error_list[0])
+    return render_template("signup.html", form=form, error=error_list[0], app_name=config.APP_NAME)

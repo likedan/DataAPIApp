@@ -4,6 +4,7 @@ from flask_wtf import Form
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired, Email, Length
 from user import User
+import config
 
 class LoginForm(Form):
     email = StringField('email', validators=[DataRequired(), Email()])
@@ -16,7 +17,7 @@ def login():
     if auth_manager.is_authenticated():
         return redirect("/index", code=302)
     else:
-        return render_template("login.html", form=form)
+        return render_template("login.html", form=form, app_name=config.APP_NAME)
 
 @app.route('/loginform', methods=['POST'])
 
@@ -33,4 +34,4 @@ def loginform():
         for key in form.errors.keys():
             error_list.append(key+": "+form.errors[key][0])
     #only displaying one error for now.                     
-    return render_template("login.html", form=form, error=error_list[0])
+    return render_template("login.html", form=form, error=error_list[0], app_name=config.APP_NAME)
