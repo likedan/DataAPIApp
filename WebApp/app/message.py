@@ -7,7 +7,7 @@ from email.MIMEText import MIMEText
 
 def send_confirmation_email_for_user(user):
 
-    link = "http://127.0.0.1:5000/emailconfirmation?"+user.email+"|"+user.email_confirmation_token
+    link = "http://127.0.0.1:5000/email_confirmation_form?email=" + user.email + "&token=" + user.email_confirmation_token
     smtp = smtplib.SMTP('smtp.gmail.com:587')
     smtp.starttls()
     smtp.login('likedan5@gmail.com', '15889431247')
@@ -24,18 +24,18 @@ def send_confirmation_email_for_user(user):
     msg['To'] = recipient
 
     # Create the body of the message (a plain-text and an HTML version).
-    text = "Dear "+user.full_name+",\nWelcome to join us.\nHere is the link for confirmation:\n"+link
-    html = """\
+    text = "Dear "+user.full_name+",\nWelcome to join us.\n"
+    html = '''
     <html>
       <head></head>
       <body>
-        <p>
-           <a href="""+link+""">Confirm</a>.
-        </p>
+      <a href="''' + link + '''">
+      Confirm
+     </a>
       </body>
     </html>
-    """
-
+    '''
+    print html
     # Record the MIME types of both parts - text/plain and text/html.
     part1 = MIMEText(text, 'plain')
     part2 = MIMEText(html, 'html')

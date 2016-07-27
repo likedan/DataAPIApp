@@ -31,9 +31,12 @@ def signupform():
             user.email = form.email.data
             user.full_name = form.full_name.data
             auth_manager.authenticated_user = user
+
             token = auth_manager.generate_confirmation_token(user.email)
             user.email_confirmation_token = token
+            user.is_email_authenticated = False
             message.send_confirmation_email_for_user(user)
+            
             user.save()
             return redirect("/index", code=302)
     else:

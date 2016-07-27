@@ -14,3 +14,4 @@ app.auth_manager = auth_manager
 from app import index
 from app import signup
 from app import login
+from app import email_confirmation
