@@ -5,10 +5,12 @@ from flask_wtf import Form
 
 @app.route('/email_confirmation_form', methods=['GET'])
 
-def email_confirmation():
+def email_confirmation_form():
     print request
-    print request.form["email"]
-    print request.form["token"]
+    email = request.args.get('email')
+    token = request.args.get('token')    
+    print email
+    print token
     error_list = []
 
     return redirect("/index")
