@@ -16,11 +16,16 @@ class SignUpForm(Form):
 @app.route('/signup', methods=['GET'])
 
 def signup():
+    if auth_manager.is_authenticated():
+        return redirect("/index", code=302)
     form = SignUpForm()
     return render_template("signup.html", form=form, app_name=config.APP_NAME)
 
 @app.route('/signupform', methods=['POST'])
 def signupform():
+
+    if auth_manager.is_authenticated():
+        return redirect("/index", code=302)
     form = SignUpForm(request.form)
     error_list = []
     if form.validate():

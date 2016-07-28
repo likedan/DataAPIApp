@@ -22,6 +22,9 @@ def login():
 @app.route('/loginform', methods=['POST'])
 
 def loginform():
+
+    if auth_manager.is_authenticated():
+        return redirect("/index", code=302)
     form = LoginForm(request.form)
     error_list = []
     if form.validate():
