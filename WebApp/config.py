@@ -5,6 +5,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 SECRET_KEY_EMAIL_AUTHENTICATION = 'my_precious_two'
+SECRET_KEY_USER_SESSION = 'my_session_key'
 
 # email
 MAIL_SERVER = 'smtp.gmail.com:587'
