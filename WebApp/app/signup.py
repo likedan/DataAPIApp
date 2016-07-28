@@ -7,8 +7,10 @@ from werkzeug.security import generate_password_hash
 from user import User
 import config
 import message
-from flask_login import login_user
 from flask import session
+import datetime
+expire_date = datetime.datetime.now()
+expire_date = expire_date + datetime.timedelta(days=365)
 
 class SignUpForm(Form):
     email = StringField('email', validators=[DataRequired(), Email()])
@@ -18,12 +20,8 @@ class SignUpForm(Form):
 @app.route('/signup', methods=['GET'])
 
 def signup():
-    if auth_manager.is_authenticated():
+    if auth_manager.is_authenticated() or auth_manager.authenticate_user_with_email_password(request.cookies.get('email'), request.cookies.get('password')):
         return redirect("/index", code=302)
-
-    # user_email = request.cookies.get('email')
-    # user_password = request.cookies.get('password_hash')
-    # token = auth_manager.authenticate_user_with_email_password(user_email, user_password):
 
     form = SignUpForm()
     return render_template("signup.html", form=form, app_name=config.APP_NAME)
@@ -31,27 +29,29 @@ def signup():
 @app.route('/signupform', methods=['POST'])
 def signupform():
 
-    if auth_manager.is_authenticated():
+    if auth_manager.is_authenticated() or auth_manager.authenticate_user_with_email_password(request.cookies.get('email'), request.cookies.get('password')):
         return redirect("/index", code=302)
     form = SignUpForm(request.form)
     error_list = []
     if form.validate():
-        user = User(form.email.data)
+        user = User(email=form.email.data)
         if user.exists():
             error_list.append("This email is associated with another account, please use a different one.")
         else:
             user.password_hash = generate_password_hash(form.password.data)
             user.email = form.email.data
             user.full_name = form.full_name.data
-
             token = auth_manager.generate_confirmation_token(user.email)
             user.email_confirmation_token = token
             user.is_email_authenticated = False
             message.send_confirmation_email_for_user(user)
             user.save()
-            login_user(user, remember=True)
+            redirect_to_index = redirect('/index', code=302)
+            response = app.make_response(redirect_to_index)  
+            response.set_cookie('email', user.email, expires=expire_date)
+            response.set_cookie('password', user.password_hash, expires=expire_date)
             session["user"] = vars(user)
-            return redirect("/index", code=302)
+            return response
     else:
         for key in form.errors.keys():
             error_list.append(key+": "+form.errors[key][0])
