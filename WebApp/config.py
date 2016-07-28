@@ -12,5 +12,4 @@ MAIL_USERNAME = 'likedan5@gmail.com'
 MAIL_PASSWORD = '15889431247'
 
 # names
-APP_NAME_CAPITAL = "TraData"
 APP_NAME = "TraData"

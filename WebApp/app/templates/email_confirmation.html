@@ -196,7 +196,7 @@
 		        <div class="navbar-header">
 		        	<!-- Mobile Toggle Menu Button -->
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
-		         <a class="navbar-brand" href="{{url_for('index')}}">Elate</a> 
+		         <a class="navbar-brand" href="{{url_for('index')}}">{{ app_name }}</a> 
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav navbar-right">
@@ -215,7 +215,7 @@
 					<h2 class="to-animate">Login</h2>
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2 subtext to-animate">
-							<h3>Welcome to XXX. Login with your account.</h3>
+							<h3>Confirmation</h3>
 						</div>
 					</div>
 				</div>
@@ -223,26 +223,9 @@
 			<center><div class="row row-bottom-padded-md">
 				<div class="col-md-3 to-animate"></div>
 				<div class="col-md-6 to-animate">
-					{% if error %}
-						<center><ul class="fh5co-contact-info">
-						<li>** {{error}} **     </li>
-						</ul></center>
-					{% endif %}
-					<form method="POST" action="{{url_for('loginform')}}">
-					{{ form.hidden_tag() }}
-					<div class="form-group ">
-						<label for="email" class="sr-only">Email</label>
-						{{ form.email(placeholder='Email',class_='form-control') }}
-					</div>
-					<div class="form-group ">
-						<label for="phone" class="sr-only">Password</label>
-						{{ form.password(placeholder='Password',class_='form-control') }}
-					</div>
-
-					<div class="form-group ">
-						<input class="btn btn-primary btn-lg" value="Login" type="submit">
-					</div>
-					</form>
+						<li class="fh5co-contact-address">
+							Congratulation! {{ email }} is Successfully Verified.
+						</li>
 				</div>
 
 			</div></center>
