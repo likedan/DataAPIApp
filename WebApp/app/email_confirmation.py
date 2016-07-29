@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect
-from app import app
+from app import app, mongo
 from user import User
 from flask_wtf import Form
 import config

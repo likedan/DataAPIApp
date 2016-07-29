@@ -1,4 +1,4 @@
-from app import app, mongo
+from app import app
 from itsdangerous import URLSafeTimedSerializer
 from user import User
 from flask import session
